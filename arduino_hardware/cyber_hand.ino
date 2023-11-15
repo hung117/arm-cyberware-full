@@ -191,7 +191,7 @@ void PoseChange()
     break;
   default: // Open
     fin_thumb.write(180);
-    fin_idx.write(180); // sets the servo position according to the scaled value
+    fin_idx.write(180); 
     fin_middle.write(0);
     
     break;
