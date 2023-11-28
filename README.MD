@@ -1,5 +1,5 @@
 # RUN the GUI app
-go to 'bare', run 'flutter run'( after setting up the prerequisite of course)
+go to 'app', run 'flutter run'( after setting up the prerequisite of course)
 ![plot](./res/homePage.png)
 ![plot](./res/record_page.png)
 ![plot](./res/about.png)

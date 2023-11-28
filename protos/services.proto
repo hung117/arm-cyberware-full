@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+service NumberSortingService {
+  rpc SortNumbers (NumberArray) returns (NumberArray) {}
+}
+
+message NumberArray {
+  repeated int32 numbers = 1;
+}
+service UrMumJoke {
+    rpc TellJoke (theJokeReq) returns (theJokeReply) {}
+
+  }
+message theJokeReq{
+    string punchline = 1;
+    string reason = 2;
+}
+message theJokeReply{
+    string message = 1;
+   
+}
+// "Ur mum is so XXXXXX that she is XXXXXXX"
+// ./starter-kit/prepare-sources.sh --proto ./protos/services.proto --flutterDir ./app --pythonDir ./server
+// chmod 755 ./starter-kit/prepare-sources.sh;
+// chmod 755 ./starter-kit/bundle-python.sh
