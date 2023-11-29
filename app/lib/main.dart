@@ -29,13 +29,6 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      // navigatorObservers: <NavigatorObserver>[observer],
-
-      // home: MyHomePage(
-      //   title: 'Firebase Analytics Demo',
-      //   analytics: analytics,
-      //   observer: observer,
-      // ),
       initialRoute: '/home',
       routes: {
         '/': (context) => Loading_screen(),

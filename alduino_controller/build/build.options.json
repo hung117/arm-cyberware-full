@@ -1,0 +1,11 @@
+{
+  "additionalFiles": "../../..,../../..,../../..",
+  "builtInToolsFolders": "",
+  "compiler.optimization_flags": "",
+  "customBuildProperties": "",
+  "fqbn": "arduino:avr:nano:cpu=atmega328",
+  "hardwareFolders": "/home/james/.arduino15/packages",
+  "otherLibrariesFolders": "/home/james/Arduino/libraries",
+  "runtime.ide.version": "10607",
+  "sketchLocation": "/home/james/Documents/cyber_arm_fin/arm-cyberware-full/alduino_controller/sketch"
+}

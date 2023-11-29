@@ -19,6 +19,23 @@ message theJokeReply{
     string message = 1;
    
 }
+
+service EMGClassifierService{
+  rpc Classify_Signal(PlaceHolderMsg)returns(PredictedSignal){}
+}
+
+service PoseHandService{
+  rpc PoseHand(PredictedSignal)returns(PlaceHolderMsg){}
+}
+
+message PredictedSignal{
+  string signal=1;
+}
+message PlaceHolderMsg{
+
+}
+
+
 // "Ur mum is so XXXXXX that she is XXXXXXX"
 // ./starter-kit/prepare-sources.sh --proto ./protos/services.proto --flutterDir ./app --pythonDir ./server
 // chmod 755 ./starter-kit/prepare-sources.sh;

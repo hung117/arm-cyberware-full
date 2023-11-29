@@ -1,0 +1,72 @@
+[
+  {
+    "Sourcefile": null,
+    "Include": "",
+    "Includepath": "/home/james/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino"
+  },
+  {
+    "Sourcefile": null,
+    "Include": "",
+    "Includepath": "/home/james/.arduino15/packages/arduino/hardware/avr/1.8.6/variants/eightanaloginputs"
+  },
+  {
+    "Sourcefile": "/home/james/Documents/cyber_arm_fin/arm-cyberware-full/alduino_controller/build/sketch/sketch.ino.cpp",
+    "Include": "Servo.h",
+    "Includepath": "/home/james/Arduino/libraries/Servo/src"
+  },
+  {
+    "Sourcefile": "/home/james/Documents/cyber_arm_fin/arm-cyberware-full/alduino_controller/build/sketch/sketch.ino.cpp",
+    "Include": "SoftwareSerial.h",
+    "Includepath": "/home/james/.arduino15/packages/arduino/hardware/avr/1.8.6/libraries/SoftwareSerial/src"
+  },
+  {
+    "Sourcefile": "/home/james/Documents/cyber_arm_fin/arm-cyberware-full/alduino_controller/build/sketch/sketch.ino.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/james/Arduino/libraries/Servo/src/avr/Servo.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/james/Arduino/libraries/Servo/src/mbed/Servo.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/james/Arduino/libraries/Servo/src/megaavr/Servo.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/james/Arduino/libraries/Servo/src/nrf52/Servo.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/james/Arduino/libraries/Servo/src/renesas/Servo.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/james/Arduino/libraries/Servo/src/sam/Servo.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/james/Arduino/libraries/Servo/src/samd/Servo.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/james/Arduino/libraries/Servo/src/stm32f4/Servo.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/james/.arduino15/packages/arduino/hardware/avr/1.8.6/libraries/SoftwareSerial/src/SoftwareSerial.cpp",
+    "Include": "",
+    "Includepath": null
+  }
+]
