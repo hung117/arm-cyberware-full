@@ -171,6 +171,88 @@ class theJokeReply extends $pb.GeneratedMessage {
   void clearMessage() => clearField(1);
 }
 
+class PredictedSignal extends $pb.GeneratedMessage {
+  factory PredictedSignal({
+    $core.int? signal,
+  }) {
+    final $result = create();
+    if (signal != null) {
+      $result.signal = signal;
+    }
+    return $result;
+  }
+  PredictedSignal._() : super();
+  factory PredictedSignal.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory PredictedSignal.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'PredictedSignal', createEmptyInstance: create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'signal', $pb.PbFieldType.O3)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  PredictedSignal clone() => PredictedSignal()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  PredictedSignal copyWith(void Function(PredictedSignal) updates) => super.copyWith((message) => updates(message as PredictedSignal)) as PredictedSignal;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static PredictedSignal create() => PredictedSignal._();
+  PredictedSignal createEmptyInstance() => create();
+  static $pb.PbList<PredictedSignal> createRepeated() => $pb.PbList<PredictedSignal>();
+  @$core.pragma('dart2js:noInline')
+  static PredictedSignal getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<PredictedSignal>(create);
+  static PredictedSignal? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.int get signal => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set signal($core.int v) { $_setSignedInt32(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasSignal() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearSignal() => clearField(1);
+}
+
+class PlaceHolderMsg extends $pb.GeneratedMessage {
+  factory PlaceHolderMsg() => create();
+  PlaceHolderMsg._() : super();
+  factory PlaceHolderMsg.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory PlaceHolderMsg.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'PlaceHolderMsg', createEmptyInstance: create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  PlaceHolderMsg clone() => PlaceHolderMsg()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  PlaceHolderMsg copyWith(void Function(PlaceHolderMsg) updates) => super.copyWith((message) => updates(message as PlaceHolderMsg)) as PlaceHolderMsg;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static PlaceHolderMsg create() => PlaceHolderMsg._();
+  PlaceHolderMsg createEmptyInstance() => create();
+  static $pb.PbList<PlaceHolderMsg> createRepeated() => $pb.PbList<PlaceHolderMsg>();
+  @$core.pragma('dart2js:noInline')
+  static PlaceHolderMsg getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<PlaceHolderMsg>(create);
+  static PlaceHolderMsg? _defaultInstance;
+}
+
 
 const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
 const _omitMessageNames = $core.bool.fromEnvironment('protobuf.omit_message_names');

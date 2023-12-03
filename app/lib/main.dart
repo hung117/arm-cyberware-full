@@ -12,6 +12,7 @@ import './pages/page2.dart';
 import './pages/test.dart';
 import './pages/todo.dart';
 import './pages/loading.dart';
+import './pages/experiment.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
         '/test': (context) => Test(),
         '/todo': (context) => Todo(),
         '/about': (context) => About(),
+        '/experiment': (context) => Experiment(),
       },
     );
   }

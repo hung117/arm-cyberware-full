@@ -51,3 +51,24 @@ const theJokeReply$json = {
 final $typed_data.Uint8List theJokeReplyDescriptor = $convert.base64Decode(
     'Cgx0aGVKb2tlUmVwbHkSGAoHbWVzc2FnZRgBIAEoCVIHbWVzc2FnZQ==');
 
+@$core.Deprecated('Use predictedSignalDescriptor instead')
+const PredictedSignal$json = {
+  '1': 'PredictedSignal',
+  '2': [
+    {'1': 'signal', '3': 1, '4': 1, '5': 5, '10': 'signal'},
+  ],
+};
+
+/// Descriptor for `PredictedSignal`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List predictedSignalDescriptor = $convert.base64Decode(
+    'Cg9QcmVkaWN0ZWRTaWduYWwSFgoGc2lnbmFsGAEgASgFUgZzaWduYWw=');
+
+@$core.Deprecated('Use placeHolderMsgDescriptor instead')
+const PlaceHolderMsg$json = {
+  '1': 'PlaceHolderMsg',
+};
+
+/// Descriptor for `PlaceHolderMsg`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List placeHolderMsgDescriptor = $convert.base64Decode(
+    'Cg5QbGFjZUhvbGRlck1zZw==');
+

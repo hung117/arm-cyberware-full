@@ -18,6 +18,8 @@ def run():
     with grpc.insecure_channel(url) as channel:
         stub = services_pb2_grpc.UrMumJokeStub(channel)
         response = stub.TellJoke(services_pb2.theJokeReq(punchline="can not breath without dying",reason="so fat"))
+        stub_classifier  = services_pb2_grpc.EMGClassifierServiceStub(channel)
+        
     print("client received: " + response.message)
 
 

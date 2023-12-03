@@ -7,6 +7,7 @@ from grpc_health.v1 import health
 # import generated gRPC stubs
 from grpc_generated import services_pb2_grpc,services_pb2
 
+import classifier
 class NumberSortingService(services_pb2_grpc.NumberSortingService):
   def SortNumbers(self,request,context):
         arr = np.array(request.numbers)
@@ -17,6 +18,11 @@ class NumberSortingService(services_pb2_grpc.NumberSortingService):
 class UrMumJoke(services_pb2_grpc.UrMumJoke):
   def TellJoke(self, request, context):
       return services_pb2.theJokeReply(message="Ur mum is so, %s, she %s !" % (request.reason, request.punchline))
+
+class EMGClassifierService(services_pb2_grpc.EMGClassifierService):
+  def Classify_Signal(self, request, context):
+      iPose = classifier.predict_plot()
+      return services_pb2.PredictedSignal(signal = iPose)
 
 def serve():
   DEFAULT_PORT = 50055
@@ -29,6 +35,7 @@ def serve():
   # TODO, add your gRPC service to self-hosted server, e.g.
   services_pb2_grpc.add_NumberSortingServiceServicer_to_server(NumberSortingService(), server)
   services_pb2_grpc.add_UrMumJokeServicer_to_server(UrMumJoke(),server)
+  services_pb2_grpc.add_EMGClassifierServiceServicer_to_server(EMGClassifierService(),server)
 
   health_pb2_grpc.add_HealthServicer_to_server(health.HealthServicer(), server)
   server.add_insecure_port(HOST)
@@ -39,7 +46,6 @@ def serve():
 if __name__ == '__main__':
   serve()  
 
-#  python server/server.py 
-# python -m grpc_tools.protoc -I../../protos --python_out=../helloworld2 --pyi_out=../helloworld2 --grpc_python_out=../helloworld2 ../../protos/helloworld.proto
-# python -m grpc_tools.protoc -I../../protos --python_out=../helloworld2 --pyi_out=../helloworld2 --grpc_python_out=../helloworld2 ../../protos/helloworld.proto
-# python -m grpc_tools.protoc -I./protos --python_out=./server/grpc_generated --grpc_python_out=./server/grpc_generated ./protos/services.proto
+
+# START OF NN Classifier part
+

@@ -35,3 +35,10 @@ sudo rfcomm release 0
 improve pose with millis, change each finger gradually, to counter hardware limitation
 uno rx,tx pin, software Serial
 serial communication
+
+```
+sudo rfcomm bind 0 98:DA:60:07:9E:8D 1 
+sudo chmod 666 /dev/ttyUSB0
+sudo chmod 666 /dev/rfcomm0
+sudo minicom -D /dev/rfcomm0
+```

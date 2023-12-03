@@ -125,3 +125,125 @@ class UrMumJoke(object):
             services__pb2.theJokeReply.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+
+class EMGClassifierServiceStub(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def __init__(self, channel):
+        """Constructor.
+
+        Args:
+            channel: A grpc.Channel.
+        """
+        self.Classify_Signal = channel.unary_unary(
+                '/EMGClassifierService/Classify_Signal',
+                request_serializer=services__pb2.PlaceHolderMsg.SerializeToString,
+                response_deserializer=services__pb2.PredictedSignal.FromString,
+                )
+
+
+class EMGClassifierServiceServicer(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def Classify_Signal(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+
+def add_EMGClassifierServiceServicer_to_server(servicer, server):
+    rpc_method_handlers = {
+            'Classify_Signal': grpc.unary_unary_rpc_method_handler(
+                    servicer.Classify_Signal,
+                    request_deserializer=services__pb2.PlaceHolderMsg.FromString,
+                    response_serializer=services__pb2.PredictedSignal.SerializeToString,
+            ),
+    }
+    generic_handler = grpc.method_handlers_generic_handler(
+            'EMGClassifierService', rpc_method_handlers)
+    server.add_generic_rpc_handlers((generic_handler,))
+
+
+ # This class is part of an EXPERIMENTAL API.
+class EMGClassifierService(object):
+    """Missing associated documentation comment in .proto file."""
+
+    @staticmethod
+    def Classify_Signal(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/EMGClassifierService/Classify_Signal',
+            services__pb2.PlaceHolderMsg.SerializeToString,
+            services__pb2.PredictedSignal.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+
+class PoseHandServiceStub(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def __init__(self, channel):
+        """Constructor.
+
+        Args:
+            channel: A grpc.Channel.
+        """
+        self.PoseHand = channel.unary_unary(
+                '/PoseHandService/PoseHand',
+                request_serializer=services__pb2.PredictedSignal.SerializeToString,
+                response_deserializer=services__pb2.PlaceHolderMsg.FromString,
+                )
+
+
+class PoseHandServiceServicer(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def PoseHand(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+
+def add_PoseHandServiceServicer_to_server(servicer, server):
+    rpc_method_handlers = {
+            'PoseHand': grpc.unary_unary_rpc_method_handler(
+                    servicer.PoseHand,
+                    request_deserializer=services__pb2.PredictedSignal.FromString,
+                    response_serializer=services__pb2.PlaceHolderMsg.SerializeToString,
+            ),
+    }
+    generic_handler = grpc.method_handlers_generic_handler(
+            'PoseHandService', rpc_method_handlers)
+    server.add_generic_rpc_handlers((generic_handler,))
+
+
+ # This class is part of an EXPERIMENTAL API.
+class PoseHandService(object):
+    """Missing associated documentation comment in .proto file."""
+
+    @staticmethod
+    def PoseHand(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/PoseHandService/PoseHand',
+            services__pb2.PredictedSignal.SerializeToString,
+            services__pb2.PlaceHolderMsg.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

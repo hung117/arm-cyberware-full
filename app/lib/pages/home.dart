@@ -72,6 +72,19 @@ class HomePage extends StatelessWidget {
             onTap: () {
               Navigator.pop(context);
               // Navigator.push(
+              //     context, MaterialPageRoute(builder: (context) => FB_test()));
+              Navigator.pushNamed(context, '/experiment');
+            },
+            leading: Icon(Icons.api),
+            title: Text(
+              'EXPERIMENT',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+          ),
+          ListTile(
+            onTap: () {
+              Navigator.pop(context);
+              // Navigator.push(
               //     context, MaterialPageRoute(builder: (context) => Todo()));
               Navigator.pushNamed(context, '/todo');
             },

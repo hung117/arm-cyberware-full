@@ -95,3 +95,79 @@ abstract class UrMumJokeServiceBase extends $grpc.Service {
 
   $async.Future<$0.theJokeReply> tellJoke($grpc.ServiceCall call, $0.theJokeReq request);
 }
+@$pb.GrpcServiceName('EMGClassifierService')
+class EMGClassifierServiceClient extends $grpc.Client {
+  static final _$classify_Signal = $grpc.ClientMethod<$0.PlaceHolderMsg, $0.PredictedSignal>(
+      '/EMGClassifierService/Classify_Signal',
+      ($0.PlaceHolderMsg value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.PredictedSignal.fromBuffer(value));
+
+  EMGClassifierServiceClient($grpc.ClientChannel channel,
+      {$grpc.CallOptions? options,
+      $core.Iterable<$grpc.ClientInterceptor>? interceptors})
+      : super(channel, options: options,
+        interceptors: interceptors);
+
+  $grpc.ResponseFuture<$0.PredictedSignal> classify_Signal($0.PlaceHolderMsg request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$classify_Signal, request, options: options);
+  }
+}
+
+@$pb.GrpcServiceName('EMGClassifierService')
+abstract class EMGClassifierServiceBase extends $grpc.Service {
+  $core.String get $name => 'EMGClassifierService';
+
+  EMGClassifierServiceBase() {
+    $addMethod($grpc.ServiceMethod<$0.PlaceHolderMsg, $0.PredictedSignal>(
+        'Classify_Signal',
+        classify_Signal_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.PlaceHolderMsg.fromBuffer(value),
+        ($0.PredictedSignal value) => value.writeToBuffer()));
+  }
+
+  $async.Future<$0.PredictedSignal> classify_Signal_Pre($grpc.ServiceCall call, $async.Future<$0.PlaceHolderMsg> request) async {
+    return classify_Signal(call, await request);
+  }
+
+  $async.Future<$0.PredictedSignal> classify_Signal($grpc.ServiceCall call, $0.PlaceHolderMsg request);
+}
+@$pb.GrpcServiceName('PoseHandService')
+class PoseHandServiceClient extends $grpc.Client {
+  static final _$poseHand = $grpc.ClientMethod<$0.PredictedSignal, $0.PlaceHolderMsg>(
+      '/PoseHandService/PoseHand',
+      ($0.PredictedSignal value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.PlaceHolderMsg.fromBuffer(value));
+
+  PoseHandServiceClient($grpc.ClientChannel channel,
+      {$grpc.CallOptions? options,
+      $core.Iterable<$grpc.ClientInterceptor>? interceptors})
+      : super(channel, options: options,
+        interceptors: interceptors);
+
+  $grpc.ResponseFuture<$0.PlaceHolderMsg> poseHand($0.PredictedSignal request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$poseHand, request, options: options);
+  }
+}
+
+@$pb.GrpcServiceName('PoseHandService')
+abstract class PoseHandServiceBase extends $grpc.Service {
+  $core.String get $name => 'PoseHandService';
+
+  PoseHandServiceBase() {
+    $addMethod($grpc.ServiceMethod<$0.PredictedSignal, $0.PlaceHolderMsg>(
+        'PoseHand',
+        poseHand_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.PredictedSignal.fromBuffer(value),
+        ($0.PlaceHolderMsg value) => value.writeToBuffer()));
+  }
+
+  $async.Future<$0.PlaceHolderMsg> poseHand_Pre($grpc.ServiceCall call, $async.Future<$0.PredictedSignal> request) async {
+    return poseHand(call, await request);
+  }
+
+  $async.Future<$0.PlaceHolderMsg> poseHand($grpc.ServiceCall call, $0.PredictedSignal request);
+}

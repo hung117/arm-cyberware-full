@@ -384,13 +384,17 @@ matrix2_flat = pred_rate
 similarity_ratio = cosine_similarity([matrix1_flat], [matrix2_flat])[0][0]
 print(similarity_ratio)
 
-# BLUETOOTH CONTROLLING
-import serial
-import time
-port="/dev/rfcomm0"
-bluetooth = serial.Serial(port=port,   baudrate=9600)
+# # # BLUETOOTH CONTROLLING
+# import serial
+# import time
+# port="/dev/rfcomm0"
+# bluetooth = serial.Serial(port=port,   baudrate=9600)
+# for pred in pred_rate:
+#     pose  = str(pred) + ";"
+#     bluetooth.write(bytes(pose,   'utf-8'))
+#     time.sleep(1.2)
+#     print(pose)
+
 for pred in pred_rate:
     pose  = str(pred) + ";"
-    bluetooth.write(bytes(pose,   'utf-8'))
-    time.sleep(1.2)
     print(pose)

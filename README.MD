@@ -11,3 +11,10 @@ to to NN_dev, there are multiple files, in which `emg.classifier.ipynb` are mult
 ![plot](./res/hand_cad/wire_port.png)
 ![plot](./res/hand_cad/proximal.png)
 ![plot](./res/hand_cad/hand_below.png)
+
+```
+#  python server/server.py 
+# python -m grpc_tools.protoc -I../../protos --python_out=../helloworld2 --pyi_out=../helloworld2 --grpc_python_out=../helloworld2 ../../protos/helloworld.proto
+# python -m grpc_tools.protoc -I../../protos --python_out=../helloworld2 --pyi_out=../helloworld2 --grpc_python_out=../helloworld2 ../../protos/helloworld.proto
+# python -m grpc_tools.protoc -I./protos --python_out=./server/grpc_generated --grpc_python_out=./server/grpc_generated ./protos/services.proto
+```

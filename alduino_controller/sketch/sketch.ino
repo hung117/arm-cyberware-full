@@ -47,7 +47,7 @@ void setup()
   pinMode(pin_Rx, INPUT);
   pinMode(pin_Tx, OUTPUT);
 
-  fin_middle.attach(9); // attaches the servo on pin 9 to the servo object
+  fin_middle.attach(8); // attaches the servo on pin 9 to the servo object
   fin_idx.attach(11);   // attaches the servo on pin 11 to the servo object
   fin_thumb.attach(10); // attaches the servo on pin 11 to the servo object
 
