@@ -207,7 +207,11 @@ class ExperimentState extends State<Experiment> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => {},
+        onPressed: () {
+          setState(() {
+            b_predRun = !b_predRun;
+          });
+        },
         tooltip: 'Said Hello',
         child: const Icon(Icons.start_outlined),
       ),
