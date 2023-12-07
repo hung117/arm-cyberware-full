@@ -21,8 +21,13 @@ class UrMumJoke(services_pb2_grpc.UrMumJoke):
 
 class EMGClassifierService(services_pb2_grpc.EMGClassifierService):
   def Classify_Signal(self, request, context):
-      iPose = classifier.predict_plot()
-      return services_pb2.PredictedSignal(signal = iPose)
+      print("request data from %s, to %s"%(request.idx_from,request.idx_to))
+      classifier.BlueToothConnect()
+      predplot = classifier.predict_plot()
+      iPose = predplot['pred']
+      base64 = predplot['base64']
+      
+      return services_pb2.PredictedSignal(signal = iPose,base64plot=base64)
 
 def serve():
   DEFAULT_PORT = 50055

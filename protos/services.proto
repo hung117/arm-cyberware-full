@@ -21,7 +21,7 @@ message theJokeReply{
 }
 
 service EMGClassifierService{
-  rpc Classify_Signal(PlaceHolderMsg)returns(PredictedSignal){}
+  rpc Classify_Signal(PredictRequest)returns(PredictedSignal){}
 }
 
 service PoseHandService{
@@ -30,9 +30,14 @@ service PoseHandService{
 
 message PredictedSignal{
   int32 signal=1;
+  string base64plot=2;//signal plot as base64
 }
 message PlaceHolderMsg{
 
+}
+message PredictRequest{
+  int32 idx_from=1;
+  int32 idx_to=2;
 }
 
 

@@ -56,12 +56,14 @@ const PredictedSignal$json = {
   '1': 'PredictedSignal',
   '2': [
     {'1': 'signal', '3': 1, '4': 1, '5': 5, '10': 'signal'},
+    {'1': 'base64plot', '3': 2, '4': 1, '5': 9, '10': 'base64plot'},
   ],
 };
 
 /// Descriptor for `PredictedSignal`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List predictedSignalDescriptor = $convert.base64Decode(
-    'Cg9QcmVkaWN0ZWRTaWduYWwSFgoGc2lnbmFsGAEgASgFUgZzaWduYWw=');
+    'Cg9QcmVkaWN0ZWRTaWduYWwSFgoGc2lnbmFsGAEgASgFUgZzaWduYWwSHgoKYmFzZTY0cGxvdB'
+    'gCIAEoCVIKYmFzZTY0cGxvdA==');
 
 @$core.Deprecated('Use placeHolderMsgDescriptor instead')
 const PlaceHolderMsg$json = {
@@ -71,4 +73,18 @@ const PlaceHolderMsg$json = {
 /// Descriptor for `PlaceHolderMsg`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List placeHolderMsgDescriptor = $convert.base64Decode(
     'Cg5QbGFjZUhvbGRlck1zZw==');
+
+@$core.Deprecated('Use predictRequestDescriptor instead')
+const PredictRequest$json = {
+  '1': 'PredictRequest',
+  '2': [
+    {'1': 'idx_from', '3': 1, '4': 1, '5': 5, '10': 'idxFrom'},
+    {'1': 'idx_to', '3': 2, '4': 1, '5': 5, '10': 'idxTo'},
+  ],
+};
+
+/// Descriptor for `PredictRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List predictRequestDescriptor = $convert.base64Decode(
+    'Cg5QcmVkaWN0UmVxdWVzdBIZCghpZHhfZnJvbRgBIAEoBVIHaWR4RnJvbRIVCgZpZHhfdG8YAi'
+    'ABKAVSBWlkeFRv');
 

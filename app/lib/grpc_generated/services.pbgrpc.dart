@@ -97,9 +97,9 @@ abstract class UrMumJokeServiceBase extends $grpc.Service {
 }
 @$pb.GrpcServiceName('EMGClassifierService')
 class EMGClassifierServiceClient extends $grpc.Client {
-  static final _$classify_Signal = $grpc.ClientMethod<$0.PlaceHolderMsg, $0.PredictedSignal>(
+  static final _$classify_Signal = $grpc.ClientMethod<$0.PredictRequest, $0.PredictedSignal>(
       '/EMGClassifierService/Classify_Signal',
-      ($0.PlaceHolderMsg value) => value.writeToBuffer(),
+      ($0.PredictRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.PredictedSignal.fromBuffer(value));
 
   EMGClassifierServiceClient($grpc.ClientChannel channel,
@@ -108,7 +108,7 @@ class EMGClassifierServiceClient extends $grpc.Client {
       : super(channel, options: options,
         interceptors: interceptors);
 
-  $grpc.ResponseFuture<$0.PredictedSignal> classify_Signal($0.PlaceHolderMsg request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$0.PredictedSignal> classify_Signal($0.PredictRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$classify_Signal, request, options: options);
   }
 }
@@ -118,20 +118,20 @@ abstract class EMGClassifierServiceBase extends $grpc.Service {
   $core.String get $name => 'EMGClassifierService';
 
   EMGClassifierServiceBase() {
-    $addMethod($grpc.ServiceMethod<$0.PlaceHolderMsg, $0.PredictedSignal>(
+    $addMethod($grpc.ServiceMethod<$0.PredictRequest, $0.PredictedSignal>(
         'Classify_Signal',
         classify_Signal_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $0.PlaceHolderMsg.fromBuffer(value),
+        ($core.List<$core.int> value) => $0.PredictRequest.fromBuffer(value),
         ($0.PredictedSignal value) => value.writeToBuffer()));
   }
 
-  $async.Future<$0.PredictedSignal> classify_Signal_Pre($grpc.ServiceCall call, $async.Future<$0.PlaceHolderMsg> request) async {
+  $async.Future<$0.PredictedSignal> classify_Signal_Pre($grpc.ServiceCall call, $async.Future<$0.PredictRequest> request) async {
     return classify_Signal(call, await request);
   }
 
-  $async.Future<$0.PredictedSignal> classify_Signal($grpc.ServiceCall call, $0.PlaceHolderMsg request);
+  $async.Future<$0.PredictedSignal> classify_Signal($grpc.ServiceCall call, $0.PredictRequest request);
 }
 @$pb.GrpcServiceName('PoseHandService')
 class PoseHandServiceClient extends $grpc.Client {

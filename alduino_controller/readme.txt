@@ -10,7 +10,7 @@ get the MAC
 sudo rfcomm bind 0 98:DA:60:07:9E:8D 1 // bind with MAC, 0:device, 1: channel
 edit the etc/bluetooth/rfcomm.conf:
 ```
-rfcomm0 {
+rfcomm0 {/home/james/Documents/cyber_arm_fin/arm-cyberware-full
 	# Automatically bind the device at startup
 	bind no;
 

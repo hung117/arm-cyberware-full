@@ -35,7 +35,7 @@ Future<void> _waitForServer() async {
         break;
       }
     } catch (_) {
-      await Future.delayed(const Duration(milliseconds: 500));
+      await Future.delayed(const Duration(milliseconds: 5000));
     }
   }
 

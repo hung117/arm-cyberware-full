@@ -174,10 +174,14 @@ class theJokeReply extends $pb.GeneratedMessage {
 class PredictedSignal extends $pb.GeneratedMessage {
   factory PredictedSignal({
     $core.int? signal,
+    $core.String? base64plot,
   }) {
     final $result = create();
     if (signal != null) {
       $result.signal = signal;
+    }
+    if (base64plot != null) {
+      $result.base64plot = base64plot;
     }
     return $result;
   }
@@ -187,6 +191,7 @@ class PredictedSignal extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'PredictedSignal', createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'signal', $pb.PbFieldType.O3)
+    ..aOS(2, _omitFieldNames ? '' : 'base64plot')
     ..hasRequiredFields = false
   ;
 
@@ -219,6 +224,15 @@ class PredictedSignal extends $pb.GeneratedMessage {
   $core.bool hasSignal() => $_has(0);
   @$pb.TagNumber(1)
   void clearSignal() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get base64plot => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set base64plot($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasBase64plot() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearBase64plot() => clearField(2);
 }
 
 class PlaceHolderMsg extends $pb.GeneratedMessage {
@@ -251,6 +265,70 @@ class PlaceHolderMsg extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static PlaceHolderMsg getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<PlaceHolderMsg>(create);
   static PlaceHolderMsg? _defaultInstance;
+}
+
+class PredictRequest extends $pb.GeneratedMessage {
+  factory PredictRequest({
+    $core.int? idxFrom,
+    $core.int? idxTo,
+  }) {
+    final $result = create();
+    if (idxFrom != null) {
+      $result.idxFrom = idxFrom;
+    }
+    if (idxTo != null) {
+      $result.idxTo = idxTo;
+    }
+    return $result;
+  }
+  PredictRequest._() : super();
+  factory PredictRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory PredictRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'PredictRequest', createEmptyInstance: create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'idxFrom', $pb.PbFieldType.O3)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'idxTo', $pb.PbFieldType.O3)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  PredictRequest clone() => PredictRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  PredictRequest copyWith(void Function(PredictRequest) updates) => super.copyWith((message) => updates(message as PredictRequest)) as PredictRequest;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static PredictRequest create() => PredictRequest._();
+  PredictRequest createEmptyInstance() => create();
+  static $pb.PbList<PredictRequest> createRepeated() => $pb.PbList<PredictRequest>();
+  @$core.pragma('dart2js:noInline')
+  static PredictRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<PredictRequest>(create);
+  static PredictRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.int get idxFrom => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set idxFrom($core.int v) { $_setSignedInt32(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasIdxFrom() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearIdxFrom() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.int get idxTo => $_getIZ(1);
+  @$pb.TagNumber(2)
+  set idxTo($core.int v) { $_setSignedInt32(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasIdxTo() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearIdxTo() => clearField(2);
 }
 
 

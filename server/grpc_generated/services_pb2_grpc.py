@@ -138,7 +138,7 @@ class EMGClassifierServiceStub(object):
         """
         self.Classify_Signal = channel.unary_unary(
                 '/EMGClassifierService/Classify_Signal',
-                request_serializer=services__pb2.PlaceHolderMsg.SerializeToString,
+                request_serializer=services__pb2.PredictRequest.SerializeToString,
                 response_deserializer=services__pb2.PredictedSignal.FromString,
                 )
 
@@ -157,7 +157,7 @@ def add_EMGClassifierServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'Classify_Signal': grpc.unary_unary_rpc_method_handler(
                     servicer.Classify_Signal,
-                    request_deserializer=services__pb2.PlaceHolderMsg.FromString,
+                    request_deserializer=services__pb2.PredictRequest.FromString,
                     response_serializer=services__pb2.PredictedSignal.SerializeToString,
             ),
     }
@@ -182,7 +182,7 @@ class EMGClassifierService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/EMGClassifierService/Classify_Signal',
-            services__pb2.PlaceHolderMsg.SerializeToString,
+            services__pb2.PredictRequest.SerializeToString,
             services__pb2.PredictedSignal.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
