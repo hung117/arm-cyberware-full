@@ -9,6 +9,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:app/grpc_generated/client.dart';
 import 'package:app/grpc_generated/init_py.dart';
+import 'package:flutter/scheduler.dart';
 // import 'package:app/grpc_generated/service.pbgrpc.dart';
 import '../grpc_generated/services.pbgrpc.dart';
 import '../custom_widgets/pythonLoaderMonitor.dart';
@@ -49,7 +50,7 @@ class ExperimentState extends State<Experiment> {
   Future<String> loadAsset() async {
     String str = "";
     await rootBundle.loadString('assets/mytext.txt').then((value) {
-      print("loadData ${value}");
+      // print("loadData ${value}");
       str = value;
     });
     return str;
@@ -64,6 +65,18 @@ class ExperimentState extends State<Experiment> {
     // print(base64string);
     // count();
     // getImageByte();
+    // _now = DateTime.now().second.toString();
+
+    // // defines a timer
+    _everySecond = Timer.periodic(Duration(seconds: 1), (Timer t) {
+      setState(() {
+        // _now = DateTime.now().second.toString();
+        // predict_getData();
+        MyFrameCallBack(postFrameDelay);
+      });
+    });
+
+    // SchedulerBinding.instance.scheduleFrameCallback(MyFrameCallBack);
   }
 
   void update() {
@@ -130,23 +143,44 @@ class ExperimentState extends State<Experiment> {
         .then((p0) => {
               sample_idx++,
               iPose = p0.signal,
-              print(p0.base64plot),
-              // base64 = p0.base64plot,
+              // print(p0.base64plot),
+              base64 = p0.base64plot,
               idxFrom++,
               bPredRunning = false
             });
   }
 
+  final postFrameDelay = Duration(seconds: 100);
+
+  void MyFrameCallBack(Duration timestamp) {
+    setState(() {
+      if (b_predRun && idxFrom < 600 && !bPredRunning) {
+        predict_getData();
+        print('run pred');
+      } else {
+        print('stop run pred');
+      }
+    });
+  }
+
+  late String _now;
+  late Timer _everySecond;
+//  WidgetsBinding.instance.addPostFrameCallback(MyFrameCallBack);
   @override
   Widget build(BuildContext context) {
+    // MyFrameCallBack(postFrameDelay);
     // WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
-    //       if (b_predRun && idxFrom < 600 && !bPredRunning) {
-    //         predict_getData();
-    //         print('run pred');
-    //       } else {
-    //         print('stop run pred');
-    //       }
-    //     }));
+    // WidgetsBinding.instance
+    //     .addPostFrameCallback((postFrameDelay) => setState(() {
+    //           if (b_predRun && idxFrom < 600 && !bPredRunning) {
+    //             predict_getData();
+    //             print('run pred');
+    //           } else {
+    //             print('stop run pred');
+    //           }
+    //         }));
+    // WidgetsBinding.instance.addPostFrameCallback(MyFrameCallBack);
+    // SchedulerBinding.instance.scheduleFrameCallback(MyFrameCallBack);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blueGrey,
@@ -240,17 +274,17 @@ class ExperimentState extends State<Experiment> {
                     borderRadius: BorderRadius.all(Radius.circular(40)),
                   ),
                   child: Image(image: AssetImage('assets/${iPose}.png'))),
-              Container(
-                  padding: const EdgeInsets.all(16.0),
-                  height: 300,
-                  width: 400,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      width: 5,
-                    ),
-                    borderRadius: BorderRadius.all(Radius.circular(40)),
-                  ),
-                  child: Image(image: AssetImage('assets/signal.png'))),
+              // Container(
+              //     padding: const EdgeInsets.all(16.0),
+              //     height: 300,
+              //     width: 400,
+              //     decoration: BoxDecoration(
+              //       border: Border.all(
+              //         width: 5,
+              //       ),
+              //       borderRadius: BorderRadius.all(Radius.circular(40)),
+              //     ),
+              //     child: Image(image: AssetImage('assets/signal.png'))),
               Container(
                   padding: const EdgeInsets.all(16.0),
                   height: 300,

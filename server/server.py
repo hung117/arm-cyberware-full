@@ -22,7 +22,6 @@ class UrMumJoke(services_pb2_grpc.UrMumJoke):
 class EMGClassifierService(services_pb2_grpc.EMGClassifierService):
   def Classify_Signal(self, request, context):
       print("request data from %s, to %s"%(request.idx_from,request.idx_to))
-      classifier.BlueToothConnect()
       predplot = classifier.predict_plot()
       iPose = predplot['pred']
       base64 = predplot['base64']
@@ -36,6 +35,8 @@ def serve():
   HOST = f'localhost:{port}'
 
   server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
+  # classifier.BlueToothConnect()
+  print("YABAI!")
 
   # TODO, add your gRPC service to self-hosted server, e.g.
   services_pb2_grpc.add_NumberSortingServiceServicer_to_server(NumberSortingService(), server)

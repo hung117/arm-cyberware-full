@@ -359,9 +359,13 @@ def max_voting(List):
 global port
 global bluetooth
 def BlueToothConnect():
-    port="/dev/rfcomm0"
-    bluetooth = serial.Serial(port=port,   baudrate=9600)
-    return {'port':port,'bluetooth':bluetooth}
+    try:
+        port="/dev/rfcomm0"
+        bluetooth = serial.Serial(port=port,   baudrate=9600)
+        # return {'port':port,'bluetooth':bluetooth}
+    except:
+        pass
+
 # BLUETOOTH COM
 def bluetoothCommand(pred):
     pose  = str(pred) + ";"
