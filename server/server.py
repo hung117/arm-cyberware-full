@@ -22,7 +22,10 @@ class UrMumJoke(services_pb2_grpc.UrMumJoke):
 class EMGClassifierService(services_pb2_grpc.EMGClassifierService):
   def Classify_Signal(self, request, context):
       print("request data from %s, to %s"%(request.idx_from,request.idx_to))
-      predplot = classifier.predict_plot()
+      # predplot = classifier.predict_plot()
+      # predplot = classifier.predict_plot(request.idx_from,request.idx_to) # the to is now act as the wanted test pose, will fix/clean later
+      predplot = classifier.predict_plot(request.idx_from,request.idx_to) # the to is now act as the wanted test pose, will fix/clean later
+      
       iPose = predplot['pred']
       base64 = predplot['base64']
       print("base64 after pred: %s"%base64)

@@ -23,6 +23,7 @@ import 'package:flutter/services.dart' show rootBundle;
 
 Future<void> pyInitResult = Future(() => null);
 Future<void> pyImportResult = Future(() => null);
+bool b_predRun = false;
 
 class Experiment extends StatefulWidget {
   const Experiment({Key? key}) : super(key: key);
@@ -34,7 +35,6 @@ class Experiment extends StatefulWidget {
 class ExperimentState extends State<Experiment> {
   List<int> randomIntegers =
       List.generate(40, (index) => Random().nextInt(100));
-  bool b_predRun = false;
   int iPose = 0;
   late var bytes;
   late Image _image;
@@ -112,7 +112,8 @@ class ExperimentState extends State<Experiment> {
   Future<void> predict_getData() async {
     bPredRunning = true;
     await EMGClassifierServiceClient(getClientChannel())
-        .classify_Signal(PredictRequest(idxFrom: idxFrom, idxTo: -1))
+        .classify_Signal(
+            PredictRequest(idxFrom: idxFrom, idxTo: pose_to_predict))
         .then((p0) => {
               sample_idx++,
               iPose = p0.signal,
@@ -276,6 +277,7 @@ class ExperimentState extends State<Experiment> {
         onPressed: () {
           setState(() {
             b_predRun = !b_predRun;
+            pose_to_predict = 11;
             idxFrom = 0;
           });
         },
@@ -295,6 +297,7 @@ class User_pose_selector extends StatefulWidget {
   State<User_pose_selector> createState() => _User_pose_selectorState();
 }
 
+var pose_to_predict = 0;
 const List<String> UserList = <String>['One', 'Two'];
 const List<String> PoseList = <String>['0', '1', '2', '3', '4', '5'];
 
@@ -333,6 +336,8 @@ class _User_pose_selectorState extends State<User_pose_selector> {
                 // This is called when the user selects an item.
                 setState(() {
                   dropdownValue = value!;
+                  pose_to_predict = int.parse(dropdownValue);
+                  b_predRun = true;
                 });
               },
               dropdownMenuEntries:
