@@ -340,7 +340,7 @@ def drawPlotAlongSample(X_test_rate):
     plt.pause(0.001)
     plt.clf()
     plt.close()
-    print(my_base64_jpgData)
+    # print(my_base64_jpgData)
     return my_base64_jpgData
 #====================================
 def max_voting(List):
@@ -388,8 +388,9 @@ def predict_plot():
     if(cur_sample_idx <len(test_X_sample_rate)):
         # for X_test_rate in test_X_sample_rate:
         X_test_rate = test_X_sample_rate[cur_sample_idx]
-        plot_as_base64=drawPlotAlongSample(X_test_rate)
-
+        base64=drawPlotAlongSample(X_test_rate)
+        if(base64!=None):
+            plot_as_base64 = base64
         preds_1 = load_model_1.predict(X_test_rate)
         preds_2 = load_model_2.predict(X_test_rate)
         preds_3 = load_model_3.predict(X_test_rate)

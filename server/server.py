@@ -25,6 +25,7 @@ class EMGClassifierService(services_pb2_grpc.EMGClassifierService):
       predplot = classifier.predict_plot()
       iPose = predplot['pred']
       base64 = predplot['base64']
+      print("base64 after pred: %s"%base64)
       
       return services_pb2.PredictedSignal(signal = iPose,base64plot=base64)
 
