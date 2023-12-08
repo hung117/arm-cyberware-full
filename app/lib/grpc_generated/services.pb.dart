@@ -270,14 +270,18 @@ class PlaceHolderMsg extends $pb.GeneratedMessage {
 class PredictRequest extends $pb.GeneratedMessage {
   factory PredictRequest({
     $core.int? idxFrom,
-    $core.int? idxTo,
+    $core.int? idxTestPose,
+    $core.int? idxUser,
   }) {
     final $result = create();
     if (idxFrom != null) {
       $result.idxFrom = idxFrom;
     }
-    if (idxTo != null) {
-      $result.idxTo = idxTo;
+    if (idxTestPose != null) {
+      $result.idxTestPose = idxTestPose;
+    }
+    if (idxUser != null) {
+      $result.idxUser = idxUser;
     }
     return $result;
   }
@@ -287,7 +291,8 @@ class PredictRequest extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'PredictRequest', createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'idxFrom', $pb.PbFieldType.O3)
-    ..a<$core.int>(2, _omitFieldNames ? '' : 'idxTo', $pb.PbFieldType.O3)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'idxTestPose', $pb.PbFieldType.O3)
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'idxUser', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
   ;
 
@@ -322,13 +327,22 @@ class PredictRequest extends $pb.GeneratedMessage {
   void clearIdxFrom() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.int get idxTo => $_getIZ(1);
+  $core.int get idxTestPose => $_getIZ(1);
   @$pb.TagNumber(2)
-  set idxTo($core.int v) { $_setSignedInt32(1, v); }
+  set idxTestPose($core.int v) { $_setSignedInt32(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasIdxTo() => $_has(1);
+  $core.bool hasIdxTestPose() => $_has(1);
   @$pb.TagNumber(2)
-  void clearIdxTo() => clearField(2);
+  void clearIdxTestPose() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.int get idxUser => $_getIZ(2);
+  @$pb.TagNumber(3)
+  set idxUser($core.int v) { $_setSignedInt32(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasIdxUser() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearIdxUser() => clearField(3);
 }
 
 

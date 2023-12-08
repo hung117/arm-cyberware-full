@@ -37,7 +37,8 @@ message PlaceHolderMsg{
 }
 message PredictRequest{
   int32 idx_from=1;
-  int32 idx_to=2;
+  int32 idx_test_pose=2;
+  int32 idx_user=3;
 }
 
 

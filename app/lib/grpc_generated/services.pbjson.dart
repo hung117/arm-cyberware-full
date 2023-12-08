@@ -79,12 +79,13 @@ const PredictRequest$json = {
   '1': 'PredictRequest',
   '2': [
     {'1': 'idx_from', '3': 1, '4': 1, '5': 5, '10': 'idxFrom'},
-    {'1': 'idx_to', '3': 2, '4': 1, '5': 5, '10': 'idxTo'},
+    {'1': 'idx_test_pose', '3': 2, '4': 1, '5': 5, '10': 'idxTestPose'},
+    {'1': 'idx_user', '3': 3, '4': 1, '5': 5, '10': 'idxUser'},
   ],
 };
 
 /// Descriptor for `PredictRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List predictRequestDescriptor = $convert.base64Decode(
-    'Cg5QcmVkaWN0UmVxdWVzdBIZCghpZHhfZnJvbRgBIAEoBVIHaWR4RnJvbRIVCgZpZHhfdG8YAi'
-    'ABKAVSBWlkeFRv');
+    'Cg5QcmVkaWN0UmVxdWVzdBIZCghpZHhfZnJvbRgBIAEoBVIHaWR4RnJvbRIiCg1pZHhfdGVzdF'
+    '9wb3NlGAIgASgFUgtpZHhUZXN0UG9zZRIZCghpZHhfdXNlchgDIAEoBVIHaWR4VXNlcg==');
 
