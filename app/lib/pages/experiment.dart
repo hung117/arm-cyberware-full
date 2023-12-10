@@ -24,6 +24,7 @@ import 'package:flutter/services.dart' show rootBundle;
 Future<void> pyInitResult = Future(() => null);
 Future<void> pyImportResult = Future(() => null);
 bool b_predRun = false;
+bool bPredRunning = false;
 
 class Experiment extends StatefulWidget {
   const Experiment({Key? key}) : super(key: key);
@@ -32,10 +33,11 @@ class Experiment extends StatefulWidget {
   State<Experiment> createState() => ExperimentState();
 }
 
+int iPose = 0;
+
 class ExperimentState extends State<Experiment> {
   List<int> randomIntegers =
       List.generate(40, (index) => Random().nextInt(100));
-  int iPose = 0;
   late var bytes;
   late Image _image;
 
@@ -106,7 +108,6 @@ class ExperimentState extends State<Experiment> {
     return res;
   }
 
-  bool bPredRunning = false;
   int idxFrom = 0;
   int idxTo = -1;
   Future<void> predict_getData() async {
@@ -161,7 +162,8 @@ class ExperimentState extends State<Experiment> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text("IPOSE: ${iPose}, bPredRun ${b_predRun}"),
+              Text(
+                  "IPOSE: ${iPose}, bPredRun ${b_predRun},bRunning ${!bPredRunning}"),
               SizedBox(
                 height: 50,
                 child: PythonLoaderMonitor(),
@@ -302,7 +304,19 @@ int testUser = 99;
 var requested_pose = 0;
 
 const List<String> UserList = <String>['One', 'Two'];
-const List<String> PoseList = <String>['0', '1', '2', '3', '4', '5'];
+const List<String> PoseList = <String>[
+  '0',
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  '7',
+  '8',
+  '9',
+  '10'
+]; //6 7 8 are extras
 
 class _User_pose_selectorState extends State<User_pose_selector> {
   String dropdownValue = UserList.first;
@@ -320,7 +334,8 @@ class _User_pose_selectorState extends State<User_pose_selector> {
                 dropdownValue = value!;
                 requested_pose = int.parse(dropdownValue);
                 b_predRun = false;
-
+                bPredRunning = false;
+                iPose = requested_pose;
                 // await PoseHandServiceClient(getClientChannel())
                 //     .poseHand_manual(PoseRequest(pose: requested_pose))
                 //     .then((p0) => {});
@@ -377,6 +392,9 @@ class _User_pose_selectorState extends State<User_pose_selector> {
                     setState(() {
                       dropdownValue = value!;
                       requested_pose = int.parse(dropdownValue);
+                      if (requested_pose > 5) {
+                        requested_pose = 5;
+                      }
                       b_predRun = true;
                     });
                   },

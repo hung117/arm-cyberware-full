@@ -149,51 +149,78 @@ void PoseChange()
   // 6 close all
   switch (i_pose)
   {
-  case 0: // Palm Open
-    moveFinger(fin_thumb,180,10);
-    moveFinger(fin_idx,180,0);
+  case 0: // Spherical
+    moveFinger(fin_thumb,70,10);
+    moveFinger(fin_idx,90,0);
+    moveFinger(fin_middle,40,0);
+    moveFinger(fin_pinky,40,0);
+
+    break;
+  case 1: //Tip
+    moveFinger(fin_thumb,100,10);
+    moveFinger(fin_idx,60,0);
+    moveFinger(fin_middle,50,0);
+    moveFinger(fin_pinky,50,0);
+
+    break;
+  case 2: // Palmar
+    moveFinger(fin_thumb,40,10);
+    moveFinger(fin_idx,90,0);
     moveFinger(fin_middle,0,0);
-    break;
-  case 1: // close all
-    moveFinger(fin_thumb,0,10);
-    moveFinger(fin_idx,0,0);
-    moveFinger(fin_middle,180,0);
+    moveFinger(fin_pinky,0,0);
 
     break;
-  case 2: // close 2 fin - thumb & index (slight)
-    moveFinger(fin_thumb,0,10);
-    moveFinger(fin_idx,180,0);
+  case 3: // Lateral
+    moveFinger(fin_thumb,40,10);
+    moveFinger(fin_idx,40,0);
     moveFinger(fin_middle,0,0);
+    moveFinger(fin_pinky,0,0);
+    break;
+  case 4: // cylinder (close)
+    moveFinger(fin_thumb,65,20);
+    moveFinger(fin_idx,45,0);
+    moveFinger(fin_middle,45,0);
+    moveFinger(fin_pinky,45,0);
 
     break;
-  case 3: // close all except thumb
-    moveFinger(fin_thumb,180,10);
-    moveFinger(fin_idx,0,0);
-    moveFinger(fin_middle,180,0);
+  case 5: //Hook
+    moveFinger(fin_thumb,180,0);
+    moveFinger(fin_idx,100,0);
+    moveFinger(fin_middle,90,0);
+    moveFinger(fin_pinky,90,0);
 
     break;
-  case 4: // close 3 fin thumb & index & middle
+  case 6: // Flip off
     moveFinger(fin_thumb,0,20);
     moveFinger(fin_idx,0,0);
     moveFinger(fin_middle,180,0);
+    moveFinger(fin_pinky,0,0);
 
     break;
-  case 5: //close all (50%)
-    moveFinger(fin_thumb,45,10);
-    moveFinger(fin_idx,90,0);
-    moveFinger(fin_middle,90,0);
+  case 7: // peace
+    moveFinger(fin_thumb,0,20);
+    moveFinger(fin_idx,180,0);
+    moveFinger(fin_middle,180,0);
+    moveFinger(fin_pinky,0,0);
+    break;
+  case 8: // point
+    moveFinger(fin_thumb,0,20);
+    moveFinger(fin_idx,180,0);
+    moveFinger(fin_middle,0,0);
+    moveFinger(fin_pinky,0,0);
 
     break;
-  case 6: // close 3 fin thumb & index & middle
-    moveFinger(fin_thumb,50,20);
-    moveFinger(fin_idx,50,0);
-    moveFinger(fin_middle,50,0);
-
+  case 9: // open all
+    moveFinger(fin_thumb,180,20);
+    moveFinger(fin_idx,180,0);
+    moveFinger(fin_middle,180,0);
+    moveFinger(fin_pinky,180,0);
     break;
-  case 7: // point
-    fin_thumb.write(0);
-    fin_idx.write(180); 
-    fin_middle.write(180);
+  case 10: // close all
+    moveFinger(fin_thumb,0,20);
+    moveFinger(fin_idx,0,0);
+    moveFinger(fin_middle,0,0);
+    moveFinger(fin_pinky,0,0);
 
     break;
   default: // Open
