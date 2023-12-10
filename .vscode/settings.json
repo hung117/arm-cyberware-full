@@ -1,3 +1,6 @@
 {
-    "cmake.sourceDirectory": "/home/james/Documents/hand_project/bare/linux/flutter"
+    "cmake.sourceDirectory": "/home/james/Documents/hand_project/bare/linux/flutter",
+    "files.associations": {
+        "*.tcc": "cpp"
+    }
 }

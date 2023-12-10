@@ -6,6 +6,7 @@ using namespace std;
 Servo fin_middle; // create servo object to control middle finger
 Servo fin_idx;    // create servo object to control index finger
 Servo fin_thumb;  // create servo object to control index finger
+Servo fin_pinky;  // create servo object to control index finger
 
 int number_of_poses = 7;
 // int pin_mode = 3;
@@ -47,9 +48,10 @@ void setup()
   pinMode(pin_Rx, INPUT);
   pinMode(pin_Tx, OUTPUT);
 
-  fin_middle.attach(8); // attaches the servo on pin 9 to the servo object
-  fin_idx.attach(11);   // attaches the servo on pin 11 to the servo object
-  fin_thumb.attach(10); // attaches the servo on pin 11 to the servo object
+  fin_middle.attach(11); // attaches the servo on pin 9 to the servo object
+  fin_idx.attach(10);   // attaches the servo on pin 11 to the servo object
+  fin_thumb.attach(6); // attaches the servo on pin 11 to the servo object
+  fin_pinky.attach(9);
 
   old_val_mid = 0;
   old_val_idx = 0;
@@ -71,17 +73,21 @@ void mannualControl()
 {
   val_mid = analogRead(potpin_mid);        // reads the value of the potentiometer (value between 0 and 1023)
   val_mid = map(val_mid, 0, 1023, 0, 180); // scale it to use it with the servo (value between 0 and 180)
+  
   fin_middle.write(val_mid);
+  fin_idx.write(val_mid);
+  fin_thumb.write(val_mid);
+  fin_pinky.write(val_mid);
   // onchange_monitor(old_val_mid, val_mid, "fin_mid ");
 
-  val_idx = analogRead(potpin_idx);        // reads the value of the potentiometer (value between 0 and 1023)
-  val_idx = map(val_idx, 0, 1023, 0, 180); // scale it to use it with the servo (value between 0 and 180)
-  fin_idx.write(val_idx);                  // sets the servo position according to the scaled value
-  // onchange_monitor(old_val_idx, val_idx, "fin_idx ");
+  // val_idx = analogRead(potpin_idx);        // reads the value of the potentiometer (value between 0 and 1023)
+  // val_idx = map(val_idx, 0, 1023, 0, 180); // scale it to use it with the servo (value between 0 and 180)
+  // fin_idx.write(val_idx);                  // sets the servo position according to the scaled value
+  // // onchange_monitor(old_val_idx, val_idx, "fin_idx ");
 
-  val_thumb = analogRead(potpin_thumb);        // reads the value of the potentiometer (value between 0 and 1023)
-  val_thumb = map(val_thumb, 0, 1023, 0, 180); // scale it to use it with the servo (value between 0 and 180)
-  fin_thumb.write(val_thumb);                  // sets the servo position according to the scaled value
+  // val_thumb = analogRead(potpin_thumb);        // reads the value of the potentiometer (value between 0 and 1023)
+  // val_thumb = map(val_thumb, 0, 1023, 0, 180); // scale it to use it with the servo (value between 0 and 180)
+  // fin_thumb.write(val_thumb);                  // sets the servo position according to the scaled value
   // onchange_monitor(old_val_thumb, val_thumb, "fin_thumb ");
 
   delay(15);

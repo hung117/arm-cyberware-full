@@ -113,7 +113,7 @@ class ExperimentState extends State<Experiment> {
     bPredRunning = true;
     await EMGClassifierServiceClient(getClientChannel())
         .classify_Signal(PredictRequest(
-            idxFrom: idxFrom, idxTestPose: pose_to_predict, idxUser: testUser))
+            idxFrom: idxFrom, idxTestPose: requested_pose, idxUser: testUser))
         .then((p0) => {
               sample_idx++,
               iPose = p0.signal,
@@ -246,7 +246,7 @@ class ExperimentState extends State<Experiment> {
                       }
                       // print(base64);
                       else {
-                        print("base64 after pred: ${base64.substring(0, 200)}");
+                        // print("base64 after pred: ${base64.substring(0, 200)}");
 
                         var uridata = Uri.parse(base64).data;
                         if (uridata != null) {
@@ -277,7 +277,7 @@ class ExperimentState extends State<Experiment> {
         onPressed: () {
           setState(() {
             b_predRun = !b_predRun;
-            pose_to_predict = 11;
+            requested_pose = 11;
             testUser = 99;
             idxFrom = 0;
           });
@@ -299,7 +299,8 @@ class User_pose_selector extends StatefulWidget {
 }
 
 int testUser = 99;
-var pose_to_predict = 0;
+var requested_pose = 0;
+
 const List<String> UserList = <String>['One', 'Two'];
 const List<String> PoseList = <String>['0', '1', '2', '3', '4', '5'];
 
@@ -308,45 +309,26 @@ class _User_pose_selectorState extends State<User_pose_selector> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+    return Column(
       children: [
         Column(
           children: [
-            Text("User"),
-            DropdownMenu<String>(
-              initialSelection: UserList.first,
-              onSelected: (String? value) {
-                // This is called when the user selects an item.
-                setState(() {
-                  dropdownValue = value!;
-                  if (dropdownValue == "One") {
-                    testUser = 0;
-                  } else if (dropdownValue == "Two") {
-                    testUser = 1;
-                  } else {
-                    testUser = 99;
-                  }
-                });
-              },
-              dropdownMenuEntries:
-                  UserList.map<DropdownMenuEntry<String>>((String value) {
-                return DropdownMenuEntry<String>(value: value, label: value);
-              }).toList(),
-            )
-          ],
-        ),
-        Column(
-          children: [
-            Text("Pose"),
+            Text("manual Posing"),
             DropdownMenu<String>(
               initialSelection: PoseList.first,
-              onSelected: (String? value) {
-                // This is called when the user selects an item.
+              onSelected: (String? value) async {
+                dropdownValue = value!;
+                requested_pose = int.parse(dropdownValue);
+                b_predRun = false;
+
+                // await PoseHandServiceClient(getClientChannel())
+                //     .poseHand_manual(PoseRequest(pose: requested_pose))
+                //     .then((p0) => {});
+                PoseHandServiceClient(getClientChannel())
+                    .poseHand_manual(PoseRequest(pose: requested_pose));
+//                // This is called when the user selects an item.
                 setState(() {
-                  dropdownValue = value!;
-                  pose_to_predict = int.parse(dropdownValue);
-                  b_predRun = true;
+                  print("choose pose manual: $requested_pose");
                 });
               },
               dropdownMenuEntries:
@@ -354,6 +336,58 @@ class _User_pose_selectorState extends State<User_pose_selector> {
                 return DropdownMenuEntry<String>(value: value, label: value);
               }).toList(),
             )
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Column(
+              children: [
+                Text("User"),
+                DropdownMenu<String>(
+                  initialSelection: UserList.first,
+                  onSelected: (String? value) {
+                    // This is called when the user selects an item.
+                    setState(() {
+                      dropdownValue = value!;
+                      if (dropdownValue == "One") {
+                        testUser = 0;
+                      } else if (dropdownValue == "Two") {
+                        testUser = 1;
+                      } else {
+                        testUser = 99;
+                      }
+                    });
+                  },
+                  dropdownMenuEntries:
+                      UserList.map<DropdownMenuEntry<String>>((String value) {
+                    return DropdownMenuEntry<String>(
+                        value: value, label: value);
+                  }).toList(),
+                )
+              ],
+            ),
+            Column(
+              children: [
+                Text("Pose"),
+                DropdownMenu<String>(
+                  initialSelection: PoseList.first,
+                  onSelected: (String? value) {
+                    // This is called when the user selects an item.
+                    setState(() {
+                      dropdownValue = value!;
+                      requested_pose = int.parse(dropdownValue);
+                      b_predRun = true;
+                    });
+                  },
+                  dropdownMenuEntries:
+                      PoseList.map<DropdownMenuEntry<String>>((String value) {
+                    return DropdownMenuEntry<String>(
+                        value: value, label: value);
+                  }).toList(),
+                )
+              ],
+            ),
           ],
         ),
       ],

@@ -197,9 +197,9 @@ class PoseHandServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.PoseHand = channel.unary_unary(
-                '/PoseHandService/PoseHand',
-                request_serializer=services__pb2.PredictedSignal.SerializeToString,
+        self.PoseHand_manual = channel.unary_unary(
+                '/PoseHandService/PoseHand_manual',
+                request_serializer=services__pb2.PoseRequest.SerializeToString,
                 response_deserializer=services__pb2.PlaceHolderMsg.FromString,
                 )
 
@@ -207,7 +207,7 @@ class PoseHandServiceStub(object):
 class PoseHandServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def PoseHand(self, request, context):
+    def PoseHand_manual(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -216,9 +216,9 @@ class PoseHandServiceServicer(object):
 
 def add_PoseHandServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'PoseHand': grpc.unary_unary_rpc_method_handler(
-                    servicer.PoseHand,
-                    request_deserializer=services__pb2.PredictedSignal.FromString,
+            'PoseHand_manual': grpc.unary_unary_rpc_method_handler(
+                    servicer.PoseHand_manual,
+                    request_deserializer=services__pb2.PoseRequest.FromString,
                     response_serializer=services__pb2.PlaceHolderMsg.SerializeToString,
             ),
     }
@@ -232,7 +232,7 @@ class PoseHandService(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def PoseHand(request,
+    def PoseHand_manual(request,
             target,
             options=(),
             channel_credentials=None,
@@ -242,8 +242,8 @@ class PoseHandService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/PoseHandService/PoseHand',
-            services__pb2.PredictedSignal.SerializeToString,
+        return grpc.experimental.unary_unary(request, target, '/PoseHandService/PoseHand_manual',
+            services__pb2.PoseRequest.SerializeToString,
             services__pb2.PlaceHolderMsg.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

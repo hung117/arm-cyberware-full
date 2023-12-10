@@ -89,3 +89,24 @@ final $typed_data.Uint8List predictRequestDescriptor = $convert.base64Decode(
     'Cg5QcmVkaWN0UmVxdWVzdBIZCghpZHhfZnJvbRgBIAEoBVIHaWR4RnJvbRIiCg1pZHhfdGVzdF'
     '9wb3NlGAIgASgFUgtpZHhUZXN0UG9zZRIZCghpZHhfdXNlchgDIAEoBVIHaWR4VXNlcg==');
 
+@$core.Deprecated('Use poseRequestDescriptor instead')
+const PoseRequest$json = {
+  '1': 'PoseRequest',
+  '2': [
+    {'1': 'pose', '3': 1, '4': 1, '5': 5, '10': 'pose'},
+  ],
+};
+
+/// Descriptor for `PoseRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List poseRequestDescriptor = $convert.base64Decode(
+    'CgtQb3NlUmVxdWVzdBISCgRwb3NlGAEgASgFUgRwb3Nl');
+
+@$core.Deprecated('Use poseHandDescriptor instead')
+const PoseHand$json = {
+  '1': 'PoseHand',
+};
+
+/// Descriptor for `PoseHand`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List poseHandDescriptor = $convert.base64Decode(
+    'CghQb3NlSGFuZA==');
+

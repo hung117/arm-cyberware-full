@@ -135,9 +135,9 @@ abstract class EMGClassifierServiceBase extends $grpc.Service {
 }
 @$pb.GrpcServiceName('PoseHandService')
 class PoseHandServiceClient extends $grpc.Client {
-  static final _$poseHand = $grpc.ClientMethod<$0.PredictedSignal, $0.PlaceHolderMsg>(
-      '/PoseHandService/PoseHand',
-      ($0.PredictedSignal value) => value.writeToBuffer(),
+  static final _$poseHand_manual = $grpc.ClientMethod<$0.PoseRequest, $0.PlaceHolderMsg>(
+      '/PoseHandService/PoseHand_manual',
+      ($0.PoseRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.PlaceHolderMsg.fromBuffer(value));
 
   PoseHandServiceClient($grpc.ClientChannel channel,
@@ -146,8 +146,8 @@ class PoseHandServiceClient extends $grpc.Client {
       : super(channel, options: options,
         interceptors: interceptors);
 
-  $grpc.ResponseFuture<$0.PlaceHolderMsg> poseHand($0.PredictedSignal request, {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$poseHand, request, options: options);
+  $grpc.ResponseFuture<$0.PlaceHolderMsg> poseHand_manual($0.PoseRequest request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$poseHand_manual, request, options: options);
   }
 }
 
@@ -156,18 +156,18 @@ abstract class PoseHandServiceBase extends $grpc.Service {
   $core.String get $name => 'PoseHandService';
 
   PoseHandServiceBase() {
-    $addMethod($grpc.ServiceMethod<$0.PredictedSignal, $0.PlaceHolderMsg>(
-        'PoseHand',
-        poseHand_Pre,
+    $addMethod($grpc.ServiceMethod<$0.PoseRequest, $0.PlaceHolderMsg>(
+        'PoseHand_manual',
+        poseHand_manual_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $0.PredictedSignal.fromBuffer(value),
+        ($core.List<$core.int> value) => $0.PoseRequest.fromBuffer(value),
         ($0.PlaceHolderMsg value) => value.writeToBuffer()));
   }
 
-  $async.Future<$0.PlaceHolderMsg> poseHand_Pre($grpc.ServiceCall call, $async.Future<$0.PredictedSignal> request) async {
-    return poseHand(call, await request);
+  $async.Future<$0.PlaceHolderMsg> poseHand_manual_Pre($grpc.ServiceCall call, $async.Future<$0.PoseRequest> request) async {
+    return poseHand_manual(call, await request);
   }
 
-  $async.Future<$0.PlaceHolderMsg> poseHand($grpc.ServiceCall call, $0.PredictedSignal request);
+  $async.Future<$0.PlaceHolderMsg> poseHand_manual($grpc.ServiceCall call, $0.PoseRequest request);
 }

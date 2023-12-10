@@ -32,6 +32,14 @@ class EMGClassifierService(services_pb2_grpc.EMGClassifierService):
       print("base64 after pred: %s"%base64)
       
       return services_pb2.PredictedSignal(signal = iPose,base64plot=base64)
+# pose_by_selection
+class PoseHandService(services_pb2_grpc.PoseHandService):
+  def PoseHand_manual(self,request,context):
+    classifier.pose_by_selection(requested_pose=request.pose)
+    # classifier.pose_by_selection(requested_pose=0)
+    print('grpc site, receive pose: %s',request.pose)
+    return services_pb2.PoseHand()
+      
 
 def serve():
   DEFAULT_PORT = 50055
@@ -40,15 +48,16 @@ def serve():
   HOST = f'localhost:{port}'
 
   server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-  # classifier.BlueToothConnect()
+  classifier.BlueToothConnect()
   print("YABAI!")
 
   # TODO, add your gRPC service to self-hosted server, e.g.
   services_pb2_grpc.add_NumberSortingServiceServicer_to_server(NumberSortingService(), server)
   services_pb2_grpc.add_UrMumJokeServicer_to_server(UrMumJoke(),server)
   services_pb2_grpc.add_EMGClassifierServiceServicer_to_server(EMGClassifierService(),server)
-
+  services_pb2_grpc.add_PoseHandServiceServicer_to_server(PoseHandService(),server)
   health_pb2_grpc.add_HealthServicer_to_server(health.HealthServicer(), server)
+
   server.add_insecure_port(HOST)
   print(f"gRPC server started and listening on {HOST}")
   server.start()

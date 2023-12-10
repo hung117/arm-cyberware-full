@@ -25,7 +25,7 @@ service EMGClassifierService{
 }
 
 service PoseHandService{
-  rpc PoseHand(PredictedSignal)returns(PlaceHolderMsg){}
+  rpc PoseHand_manual(PoseRequest)returns(PoseHand){}
 }
 
 message PredictedSignal{
@@ -41,7 +41,12 @@ message PredictRequest{
   int32 idx_user=3;
 }
 
-
+message PoseRequest{
+  int32 pose=1;
+}
+message PoseHand{
+  // string PlaceHolderMsg=1;
+}
 
 // "Ur mum is so XXXXXX that she is XXXXXXX"
 // ./starter-kit/prepare-sources.sh --proto ./protos/services.proto --flutterDir ./app --pythonDir ./server

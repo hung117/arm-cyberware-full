@@ -429,6 +429,7 @@ def max_voting(List):
 global port
 global bluetooth
 def BlueToothConnect():
+    global bluetooth
     try:
         port="/dev/rfcomm0"
         bluetooth = serial.Serial(port=port,   baudrate=9600)
@@ -438,8 +439,12 @@ def BlueToothConnect():
 
 # BLUETOOTH COM
 def bluetoothCommand(pred):
+    global bluetooth
     pose  = str(pred) + ";"
-    # bluetooth.write(bytes(pose,   'utf-8'))
+    try:
+        bluetooth.write(bytes(pose,   'utf-8'))
+    except:
+        pass
     time.sleep(1.2)
     print(pose)
 #====================================
@@ -527,6 +532,8 @@ def predict_plot(cur_sample_idx,wanted_pose,test_user):
     pred_rate = np.array(pred)
 
     return {'pred':pred_rate,'base64':plot_as_base64}
+def pose_by_selection(requested_pose):
+    bluetoothCommand(requested_pose)
 
 global y_user1_test
 global X_user1_test
